@@ -20,22 +20,24 @@ local appArrangement = {}
 -- constants
 mainScreen = "Color LCD"
 homeScreen = "U28D590"
+workScreenLeft = "2450W"
+workScreenRight = "LG FULL HD"
 
 workBrowser = "Google Chrome"
 homeBrowser = "Safari"
 editor = "Atom"
-terminal = "Iterm2"
+terminal = "iTerm2"
 mail = "Airmail"
 
 secondaryArrangementHome = {
 	{workBrowser, nil, homeScreen, hs.layout.left50, nil, nil},
 	{editor, nil, homeScreen, hs.layout.right50, nil, nil}
 }
--- TODO: fix for work
--- secondaryArrangementWork = {
---   {"Google Chrome", nil, "U28D590", hs.layout.left50, nil, nil},
---   {"Atom", nil, "U28D590", hs.layout.right50, nil, nil}
--- }
+
+secondaryArrangementWork = {
+    {workBrowser, nil, workScreenLeft, hs.layout.maximized, nil, nil},
+    {editor, nil, workScreenRight, hs.layout.right50, nil, nil}
+}
 
 function atHome()
 	screens = hs.screen.allScreens()
@@ -60,6 +62,10 @@ function rearrange ()
 	arrangement = mainArrangement()
 	if atHome() == true then
 		for k,v in pairs(secondaryArrangementHome) do
+			table.insert(arrangement, v)
+		end
+	else
+		for k,v in pairs(secondaryArrangementWork) do
 			table.insert(arrangement, v)
 		end
 	end
