@@ -29,6 +29,11 @@ editor = "Atom"
 terminal = "iTerm2"
 mail = "Airmail"
 
+singleArrangement = {
+	{workBrowser, nil, mainScreen, hs.layout.left50, nil, nil},
+	{editor, nil, mainScreen, hs.layout.right50, nil, nil}
+}
+
 secondaryArrangementHome = {
 	{workBrowser, nil, homeScreen, hs.layout.left50, nil, nil},
 	{editor, nil, homeScreen, hs.layout.right50, nil, nil}
@@ -38,6 +43,19 @@ secondaryArrangementWork = {
     {workBrowser, nil, workScreenLeft, hs.layout.maximized, nil, nil},
     {editor, nil, workScreenRight, hs.layout.right50, nil, nil}
 }
+
+function justLaptop()
+	screens = hs.screen.allScreens()
+	count = 0
+	for k,v in pairs(screens) do
+		count = count + 1
+	end
+	if count == 1 then
+		return true
+	else
+		return false
+	end
+end
 
 function atHome()
 	screens = hs.screen.allScreens()
@@ -60,7 +78,11 @@ end
 
 function rearrange ()
 	arrangement = mainArrangement()
-	if atHome() == true then
+	if justLaptop() == true then
+		for k,v in pairs(singleArrangement) do
+			table.insert(arrangement, v)
+		end
+	elseif atHome() == true then
 		for k,v in pairs(secondaryArrangementHome) do
 			table.insert(arrangement, v)
 		end
