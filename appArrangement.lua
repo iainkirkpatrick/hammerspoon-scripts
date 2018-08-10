@@ -27,7 +27,7 @@ workBrowser = "Google Chrome"
 homeBrowser = "Safari"
 editor = "Atom"
 terminal = "iTerm2"
-mail = "Airmail"
+mail = "Mailspring"
 
 singleArrangement = {
 	{workBrowser, nil, mainScreen, hs.layout.left50, nil, nil},
