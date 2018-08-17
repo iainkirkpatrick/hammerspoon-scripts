@@ -15,74 +15,41 @@ CONST's for text editor, work browser, home browser
   - iterm full on main
 --]]
 
-local appArrangement = {}
-
--- constants
-mainScreen = "Color LCD"
-homeScreen = "U28D590"
-workScreenLeft = "2450W"
-workScreenRight = "LG FULL HD"
-
-workBrowser = "Google Chrome"
-homeBrowser = "Safari"
-editor = "Atom"
-terminal = "iTerm2"
-mail = "Mailspring"
+local shared = require "shared"
+local constants = shared.constants
 
 singleArrangement = {
-	{workBrowser, nil, mainScreen, hs.layout.left50, nil, nil},
-	{editor, nil, mainScreen, hs.layout.right50, nil, nil}
+	{constants.workBrowser, nil, constants.mainScreen, hs.layout.left50, nil, nil},
+	{constants.editor, nil, constants.mainScreen, hs.layout.right50, nil, nil}
 }
 
 secondaryArrangementHome = {
-	{workBrowser, nil, homeScreen, hs.layout.left50, nil, nil},
-	{editor, nil, homeScreen, hs.layout.right50, nil, nil}
+	{constants.workBrowser, nil, constants.homeScreen, hs.layout.left50, nil, nil},
+	{constants.editor, nil, constants.homeScreen, hs.layout.right50, nil, nil}
 }
 
 secondaryArrangementWork = {
-    {workBrowser, nil, workScreenLeft, hs.layout.maximized, nil, nil},
-    {editor, nil, workScreenRight, hs.layout.right50, nil, nil}
+    {constants.workBrowser, nil, constants.workScreenLeft, hs.layout.maximized, nil, nil},
+    {constants.editor, nil, constants.workScreenRight, hs.layout.right50, nil, nil}
 }
-
-function justLaptop()
-	screens = hs.screen.allScreens()
-	count = 0
-	for k,v in pairs(screens) do
-		count = count + 1
-	end
-	if count == 1 then
-		return true
-	else
-		return false
-	end
-end
-
-function atHome()
-	screens = hs.screen.allScreens()
-	if screens[2]:name() == homeScreen then
-		return true
-	else
-		return false
-	end
-end
 
 function mainArrangement (location)
 	return {
-    	{"Slack", nil, mainScreen, hs.layout.right50, nil, nil},
-    	{"Spotify", nil, mainScreen, hs.layout.right50, nil, nil},
-    	{mail, nil, mainScreen, hs.layout.right50, nil, nil},
-    	{homeBrowser, nil, mainScreen, hs.layout.left50, nil, nil},
-    	{terminal, nil, mainScreen, hs.layout.maximized, nil, nil}
+    	{constants.workChat, nil, constants.mainScreen, hs.layout.right50, nil, nil},
+    	{constants.music, nil, constants.mainScreen, hs.layout.right50, nil, nil},
+    	{constants.mail, nil, constants.mainScreen, hs.layout.right50, nil, nil},
+    	{constants.homeBrowser, nil, constants.mainScreen, hs.layout.left50, nil, nil},
+    	{constants.terminal, nil, constants.mainScreen, hs.layout.maximized, nil, nil}
     }
 end
 
 function rearrange ()
 	arrangement = mainArrangement()
-	if justLaptop() == true then
+	if shared.justLaptop() == true then
 		for k,v in pairs(singleArrangement) do
 			table.insert(arrangement, v)
 		end
-	elseif atHome() == true then
+	elseif shared.atHome() == true then
 		for k,v in pairs(secondaryArrangementHome) do
 			table.insert(arrangement, v)
 		end
@@ -95,7 +62,7 @@ function rearrange ()
 	hs.layout.apply(arrangement)
 end
 
-function appArrangement.watch ()
+function watch ()
 	watching = hs.screen.watcher.new(function()
 		rearrange()
 	end)
@@ -115,4 +82,6 @@ function getScreenAndPosition()
 end
 --]]
 
-return appArrangement
+return {
+	watch = watch
+}
