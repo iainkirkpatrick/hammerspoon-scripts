@@ -1,3 +1,7 @@
 #!/bin/bash
 cp ./init.lua ~/.hammerspoon/
-echo "setup complete, run Hammerspoon to start scripts"
+if [ $? -eq 0 ]; then
+  echo "setup complete, run Hammerspoon to start scripts"
+else
+  echo "oops, setup failed"
+fi
