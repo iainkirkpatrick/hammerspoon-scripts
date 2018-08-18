@@ -14,6 +14,18 @@ function setGridForScreens ()
 	end
 end
 
+function listenForGridUpdates ()
+	hs.urlevent.bind("setGrid", function (eventName, params)
+		local activeScreen = hs.screen.mainScreen()
+		hs.grid.setGrid(params["grid"], activeScreen).setMargins(hs.geometry.size(0,0))
+		for i,win in pairs(hs.window.allWindows()) do
+			if win:screen() == activeScreen then
+				hs.grid.snap(win)
+			end
+		end
+	end)
+end
+
 function bindWindowManagementHotkeys ()
 	-- disable animation of windows when moving
   hs.window.animationDuration = 0
@@ -88,6 +100,7 @@ end
 
 function start ()
 	setGridForScreens()
+	listenForGridUpdates()
 	bindWindowManagementHotkeys()
 end
 
