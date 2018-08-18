@@ -28,7 +28,7 @@ end
 
 function atHome()
 	screens = hs.screen.allScreens()
-	if screens[2]:name() == homeScreen then
+	if screens[1]:name() == homeScreen then
 		return true
 	else
 		return false
