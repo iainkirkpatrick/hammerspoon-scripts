@@ -10,6 +10,8 @@ function setGridForScreens ()
 			hs.grid.setGrid('2x1', screen).setMargins(hs.geometry.size(0,0))
 		elseif screen:name() == constants.homeScreen then
 		  hs.grid.setGrid('3x2', screen).setMargins(hs.geometry.size(0,0))
+		elseif screen:name() == constants.dansWorkScreen then
+			hs.grid.setGrid('3x3', screen).setMargins(hs.geometry.size(0,0))
 		end
 	end
 end

@@ -3,6 +3,7 @@ local constants = {
   homeScreen = "U28D590",
   workScreenLeft = "2450W",
   workScreenRight = "LG FULL HD",
+  dansWorkScreen = "PHL BDM4065",
 
   workBrowser = "Google Chrome",
   homeBrowser = "Safari",
