@@ -18,17 +18,17 @@ CONST's for text editor, work browser, home browser
 local shared = require "shared"
 local constants = shared.constants
 
-singleArrangement = {
+local singleArrangement = {
 	{constants.workBrowser, nil, constants.mainScreen, hs.layout.left50, nil, nil},
 	{constants.editor, nil, constants.mainScreen, hs.layout.right50, nil, nil}
 }
 
-secondaryArrangementHome = {
+local secondaryArrangementHome = {
 	{constants.workBrowser, nil, constants.homeScreen, hs.layout.left50, nil, nil},
 	{constants.editor, nil, constants.homeScreen, hs.layout.right50, nil, nil}
 }
 
-secondaryArrangementWork = {
+local secondaryArrangementWork = {
     {constants.workBrowser, nil, constants.workScreenLeft, hs.layout.maximized, nil, nil},
     {constants.editor, nil, constants.workScreenRight, hs.layout.right50, nil, nil}
 }
@@ -62,9 +62,29 @@ function rearrange ()
 	hs.layout.apply(arrangement)
 end
 
+function compareScreens (old, new)
+	for id,screen in pairs(old) do
+		local match = false
+		for idNew,screenNew in pairs(new) do
+			if screen:name() == screenNew:name() then
+				match = true
+				break
+			end
+		end
+		if match == false then
+			return false
+		end
+	end
+	return true
+end
+
 function watch ()
+	local initialScreens = hs.screen.allScreens()
 	watching = hs.screen.watcher.new(function()
-		rearrange()
+		local isSameScreens = compareScreens(initialScreens, hs.screen.allScreens())
+		if not isSameScreens then
+			rearrange()
+		end
 	end)
 	watching:start()
 end
