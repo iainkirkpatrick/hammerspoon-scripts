@@ -91,6 +91,7 @@ function setDefaultGrid (screen)
 
   local gridString = screenColumns .. "x" .. screenRows
   hs.grid.setGrid(gridString, screen).setMargins(hs.geometry.size(0,0))
+  hs.notify.show('Screen grid set', '', screen:name() .. ': ' .. gridString)
 end
 
 function listenForGridUpdates ()
@@ -102,6 +103,7 @@ function listenForGridUpdates ()
 				hs.grid.snap(win)
 			end
 		end
+    hs.notify.show('Screen grid updated', '', activeScreen:name() .. ': ' .. params['grid'])
 	end)
 end
 
