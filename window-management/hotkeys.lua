@@ -1,33 +1,3 @@
-local shared = require "shared"
-local constants = shared.constants
-
-function setGridForScreens ()
-	-- might be some way to DRY this up with code in shared
-	-- consider moving this setup config to the shared file, or a config file
-	local screens = hs.screen.allScreens()
-	for id,screen in pairs(screens) do
-		if screen:name() == constants.mainScreen then
-			hs.grid.setGrid('2x1', screen).setMargins(hs.geometry.size(0,0))
-		elseif screen:name() == constants.homeScreen then
-		  hs.grid.setGrid('3x2', screen).setMargins(hs.geometry.size(0,0))
-		elseif screen:name() == constants.dansWorkScreen then
-			hs.grid.setGrid('3x3', screen).setMargins(hs.geometry.size(0,0))
-		end
-	end
-end
-
-function listenForGridUpdates ()
-	hs.urlevent.bind("setGrid", function (eventName, params)
-		local activeScreen = hs.screen.mainScreen()
-		hs.grid.setGrid(params["grid"], activeScreen).setMargins(hs.geometry.size(0,0))
-		for i,win in pairs(hs.window.allWindows()) do
-			if win:screen() == activeScreen then
-				hs.grid.snap(win)
-			end
-		end
-	end)
-end
-
 function bindWindowManagementHotkeys ()
 	-- disable animation of windows when moving
   hs.window.animationDuration = 0
@@ -100,12 +70,6 @@ function bindWindowManagementHotkeys ()
 	end)
 end
 
-function start ()
-	setGridForScreens()
-	listenForGridUpdates()
-	bindWindowManagementHotkeys()
-end
-
 return {
-	start = start
+	bindWindowManagementHotkeys = bindWindowManagementHotkeys
 }

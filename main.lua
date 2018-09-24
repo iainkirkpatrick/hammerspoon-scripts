@@ -1,7 +1,5 @@
-local appArrangement = require "appArrangement"
-local windowManagement = require "windowManagement"
+local index = require "window-management.index"
 
 return {
-  appArrangement = appArrangement,
-  windowManagement = windowManagement
+  index = index
 }
