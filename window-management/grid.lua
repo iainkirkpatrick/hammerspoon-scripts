@@ -12,6 +12,8 @@ local defaultGridBreakpoints = {
     ['2880'] = 3
   }
 }
+local orderedWidths = {'0', '1680', '3840', '5120'}
+local orderedHeights = {'0', '1050', '2160', '2880'}
 
 -- https://stackoverflow.com/questions/2705793/how-to-get-number-of-entries-in-a-lua-table
 function tablelength(T)
@@ -78,14 +80,14 @@ function setDefaultGrid (screen)
 	local screenColumns = 3
 
   -- these could be refactored possibly? lua-fu not good enough to battle with preventing extra looping
-	for width,columns in pairs(defaultGridBreakpoints.widths) do
+	for _,width in ipairs(orderedWidths) do
 		if screen:currentMode()['w'] >= tonumber(width) then
-			screenColumns = columns
+			screenColumns = defaultGridBreakpoints.widths[width]
 		end
 	end
-	for height,rows in pairs(defaultGridBreakpoints.heights) do
+	for _,height in ipairs(orderedHeights) do
 		if screen:currentMode()['h'] >= tonumber(height) then
-			screenRows = rows
+			screenRows = defaultGridBreakpoints.heights[height]
 		end
 	end
 
