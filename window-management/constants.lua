@@ -20,11 +20,11 @@ local positions = {
   fullScreen = hs.geometry.rect(0, 0, 1, 1),
   leftHalf = hs.geometry.rect(0, 0, 0.5, 1),
   rightHalf = hs.geometry.rect(0.5, 0, 0.5, 1),
-  leftThirdColumn = hs.geometry.rect(0, 0, 0.33, 1),
-  rightThirdColumn = hs.geometry.rect(0.66, 0, 0.33, 1),
-  middleThirdColumn = hs.geometry.rect(0.33, 0, 0.33, 1),
-  rightThirdColumnTwoThirdsHeight = hs.geometry.rect(0.66, 0, 0.33, 0.66),
-  rightThirdColumnOneThirdHeightBottom = hs.geometry.rect(0.66, 0.66, 0.33, 0.33)
+  leftThirdColumn = hs.geometry.rect(0, 0, 0.3333, 1),
+  rightThirdColumn = hs.geometry.rect(0.6666, 0, 0.3333, 1),
+  middleThirdColumn = hs.geometry.rect(0.3333, 0, 0.3333, 1),
+  rightThirdColumnTwoThirdsHeight = hs.geometry.rect(0.6666, 0, 0.3333, 0.6666),
+  rightThirdColumnOneThirdHeightBottom = hs.geometry.rect(0.6666, 0.6666, 0.3333, 0.3333)
 }
 
 return {
