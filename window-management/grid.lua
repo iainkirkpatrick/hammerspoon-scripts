@@ -58,7 +58,7 @@ function arrangeApps (screens)
     end
     notificationText = 'Screen 1: ' .. grids[1].w .. 'x' .. grids[1].h
   elseif numScreens == 2 then
-    if grids[1].w == 2 and grids[1].h == 2 and grids[2].w == 3 and grids[2].h == 2 then
+    if grids[1].w == 3 and grids[1].h == 2 and grids[2].w == 2 and grids[2].h == 2 then
       table.insert(arrangement, { constants.programs.workBrowser, nil, screens[1], constants.positions.leftThirdColumn, nil, nil })
       table.insert(arrangement, { constants.programs.homeBrowser, nil, screens[2], constants.positions.fullScreen, nil, nil })
       table.insert(arrangement, { constants.programs.editor, nil, screens[1], constants.positions.rightThirdColumn, nil, nil })
