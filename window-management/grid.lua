@@ -69,7 +69,18 @@ function arrangeApps (screens)
       table.insert(arrangement, { constants.programs.mail, nil, screens[2], constants.positions.fullScreen, nil, nil })
       table.insert(arrangement, { constants.programs.workChat, nil, screens[2], constants.positions.rightHalf, nil, nil })
     end
-    notificationText = screens[1]:name() .. '1: ' .. grids[1].w .. 'x' .. grids[1].h .. ', ' .. screens[2]:name() .. ': ' .. grids[2].w .. 'x' .. grids[2].h
+    notificationText = screens[1]:name() .. '1: ' .. grids[1].w .. 'x' .. grids[1].h .. ', ' .. screens[2]:name() .. '2: ' .. grids[2].w .. 'x' .. grids[2].h
+  elseif numScreens == 3 then
+    if grids[1].w == 2 and grids[1].h == 2 and grids[2].w == 2 and grids[2].h == 2 and grids[3].w == 2 and grids[3].h == 2 then
+      table.insert(arrangement, { constants.programs.workBrowser, nil, screens[3], constants.positions.leftHalf, nil, nil })
+      table.insert(arrangement, { constants.programs.homeBrowser, nil, screens[1], constants.positions.fullScreen, nil, nil })
+      table.insert(arrangement, { constants.programs.editor, nil, screens[2], constants.positions.rightHalf, nil, nil })
+      table.insert(arrangement, { constants.programs.music, nil, screens[1], constants.positions.rightHalf, nil, nil })
+      table.insert(arrangement, { constants.programs.terminal, nil, screens[1], constants.positions.fullScreen, nil, nil })
+      table.insert(arrangement, { constants.programs.mail, nil, screens[1], constants.positions.fullScreen, nil, nil })
+      table.insert(arrangement, { constants.programs.workChat, nil, screens[2], constants.positions.rightHalf, nil, nil })
+    end
+    notificationText = screens[1]:name() .. '1: ' .. grids[1].w .. 'x' .. grids[1].h .. ', ' .. screens[2]:name() .. '2: ' .. grids[2].w .. 'x' .. grids[2].h .. ', ' .. screens[3]:name() .. '3: ' .. grids[3].w .. 'x' .. grids[3].h
   end
 
   hs.layout.apply(arrangement)
