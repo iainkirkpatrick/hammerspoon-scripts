@@ -2,11 +2,13 @@ local constants = require "constants"
 
 local defaultGridBreakpoints = {
   widths = {
+    ['0'] = 2,
     ['1680'] = 2,
     ['3840'] = 3,
     ['5120'] = 3
   },
   heights = {
+    ['0'] = 1,
     ['1050'] = 2,
     ['2160'] = 2,
     ['2880'] = 3
