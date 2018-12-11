@@ -43,6 +43,7 @@ function arrangeApps (screens)
   if numScreens == 1 then
     if grids[1].w == 2 and grids[1].h == 2 then
       table.insert(arrangement, { constants.programs.workBrowser, nil, screens[1], constants.positions.leftHalf, nil, nil })
+      table.insert(arrangement, { constants.programs.workBrowser2, nil, screens[1], constants.positions.leftHalf, nil, nil })
       table.insert(arrangement, { constants.programs.homeBrowser, nil, screens[1], constants.positions.fullScreen, nil, nil })
       table.insert(arrangement, { constants.programs.editor, nil, screens[1], constants.positions.rightHalf, nil, nil })
       table.insert(arrangement, { constants.programs.music, nil, screens[1], constants.positions.rightHalf, nil, nil })
@@ -51,6 +52,7 @@ function arrangeApps (screens)
       table.insert(arrangement, { constants.programs.workChat, nil, screens[1], constants.positions.rightHalf, nil, nil })
     elseif grids[1].w == 3 and grids[1].h == 3 then
       table.insert(arrangement, { constants.programs.workBrowser, nil, screens[1], constants.positions.leftThirdColumn, nil, nil })
+      table.insert(arrangement, { constants.programs.workBrowser2, nil, screens[1], constants.positions.leftThirdColumn, nil, nil })
       table.insert(arrangement, { constants.programs.homeBrowser, nil, screens[1], constants.positions.middleThirdColumn, nil, nil })
       table.insert(arrangement, { constants.programs.editor, nil, screens[1], constants.positions.rightThirdColumnTwoThirdsHeight, nil, nil })
       table.insert(arrangement, { constants.programs.music, nil, screens[1], constants.positions.rightThirdColumnTwoThirdsHeight, nil, nil })
@@ -62,6 +64,7 @@ function arrangeApps (screens)
   elseif numScreens == 2 then
     if grids[1].w == 3 and grids[1].h == 2 and grids[2].w == 2 and grids[2].h == 2 then
       table.insert(arrangement, { constants.programs.workBrowser, nil, screens[1], constants.positions.leftThirdColumn, nil, nil })
+      table.insert(arrangement, { constants.programs.workBrowser2, nil, screens[1], constants.positions.leftThirdColumn, nil, nil })
       table.insert(arrangement, { constants.programs.homeBrowser, nil, screens[2], constants.positions.fullScreen, nil, nil })
       table.insert(arrangement, { constants.programs.editor, nil, screens[1], constants.positions.rightThirdColumn, nil, nil })
       table.insert(arrangement, { constants.programs.music, nil, screens[2], constants.positions.rightHalf, nil, nil })
@@ -72,7 +75,8 @@ function arrangeApps (screens)
     notificationText = screens[1]:name() .. '1: ' .. grids[1].w .. 'x' .. grids[1].h .. ', ' .. screens[2]:name() .. '2: ' .. grids[2].w .. 'x' .. grids[2].h
   elseif numScreens == 3 then
     if grids[1].w == 2 and grids[1].h == 2 and grids[2].w == 2 and grids[2].h == 2 and grids[3].w == 2 and grids[3].h == 2 then
-      table.insert(arrangement, { constants.programs.workBrowser, nil, screens[3], constants.positions.leftHalf, nil, nil })
+      table.insert(arrangement, { constants.programs.workBrowser, nil, screens[2], constants.positions.leftHalf, nil, nil })
+      table.insert(arrangement, { constants.programs.workBrowser2, nil, screens[2], constants.positions.leftHalf, nil, nil })
       table.insert(arrangement, { constants.programs.homeBrowser, nil, screens[1], constants.positions.fullScreen, nil, nil })
       table.insert(arrangement, { constants.programs.editor, nil, screens[2], constants.positions.rightHalf, nil, nil })
       table.insert(arrangement, { constants.programs.music, nil, screens[1], constants.positions.rightHalf, nil, nil })
