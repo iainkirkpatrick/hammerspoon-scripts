@@ -7,8 +7,7 @@ local screens = {
 }
 
 local programs = {
-  workBrowser = "Google Chrome",
-  workBrowser2 = "Firefox", -- consider allowing arrays as values?
+  workBrowser = "Firefox Developer Edition",
   homeBrowser = "Safari",
   editor = "Atom",
   music = "Spotify",
