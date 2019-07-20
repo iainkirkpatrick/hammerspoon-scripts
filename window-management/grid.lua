@@ -3,19 +3,19 @@ local constants = require "constants"
 local defaultGridBreakpoints = {
   widths = {
     ['0'] = 2,
-    ['1680'] = 2,
+    ['1920'] = 2,
     ['3840'] = 3,
     ['5120'] = 3
   },
   heights = {
     ['0'] = 1,
-    ['1050'] = 2,
+    ['1200'] = 2,
     ['2160'] = 2,
     ['2880'] = 3
   }
 }
-local orderedWidths = {'0', '1680', '3840', '5120'}
-local orderedHeights = {'0', '1050', '2160', '2880'}
+local orderedWidths = {'0', '1920', '3840', '5120'}
+local orderedHeights = {'0', '1200', '2160', '2880'}
 
 -- https://stackoverflow.com/questions/2705793/how-to-get-number-of-entries-in-a-lua-table
 function tablelength(T)
